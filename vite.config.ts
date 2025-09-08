@@ -3,7 +3,16 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
     plugins: [sveltekit()],
+    resolve: {
+        ...(process.env.VITEST
+            ? {
+                  conditions: ['browser']
+              }
+            : {})
+    },
     test: {
+        globals: true,
+        environment: 'jsdom',
         include: ['src/lib/**/*.test.ts'],
         expect: { requireAssertions: true },
         coverage: {

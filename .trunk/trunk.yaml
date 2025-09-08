@@ -68,7 +68,7 @@ lint:
         #       - sqlglot
         #       - sentry_sdk
         - sql-formatter@15.6.8
-        - eslint@9.34.0:
+        - eslint@9.35.0:
               packages:
                   - svelte-eslint-parser
                   - '@eslint/js'
@@ -82,7 +82,7 @@ lint:
         - actionlint@1.7.7
         - taplo@0.10.0
         - bandit@1.8.6
-        - checkov@3.2.469
+        - checkov@3.2.470
         - git-diff-check
         - hadolint@2.13.1
         - isort@6.0.1

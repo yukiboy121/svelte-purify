@@ -1,119 +1,124 @@
 {
-	"name": "@humanspeak/svelte-purify",
-	"version": "0.0.0",
-	"description": "Safe HTML rendering for Svelte powered by DOMPurify. SSR-ready, browser-only entry, and edge-friendly options.",
-	"keywords": [
-		"svelte",
-		"sveltekit",
-		"dompurify",
-		"sanitize",
-		"sanitization",
-		"xss",
-		"security",
-		"html",
-		"safe-html",
-		"render",
-		"renderer",
-		"ssr",
-		"edge",
-		"browser",
-		"browser-only",
-		"svelte-component",
-		"svelte-library",
-		"svelte-plugin",
-		"dom",
-		"dompurify-config"
-	],
-	"homepage": "https://github.com/humanspeak/svelte-purify#readme",
-	"bugs": {
-		"url": "https://github.com/humanspeak/svelte-purify/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/humanspeak/svelte-purify.git"
-	},
-	"funding": {
-		"type": "github",
-		"url": "https://github.com/sponsors/humanspeak"
-	},
-	"license": "MIT",
-	"author": "Humanspeak, Inc.",
-	"engines": {
-		"node": ">=18"
-	},
-	"sideEffects": [
-		"**/*.css"
-	],
-	"type": "module",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js"
-		}
-	},
-	"svelte": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"files": [
-		"dist",
-		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
-	],
-	"scripts": {
-		"build": "vite build && npm run prepack",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"dev": "vite dev",
-		"format": "prettier --write .",
-		"husky": "husky",
-		"lint": "prettier --check . && eslint .",
-		"prepack": "svelte-kit sync && svelte-package && publint",
-		"prepare": "svelte-kit sync || echo ''",
-		"preview": "vite preview",
-		"test": "npm run test:unit -- --run",
-		"test:unit": "vitest --coverage"
-	},
-	"devDependencies": {
-		"@eslint/compat": "^1.3.2",
-		"@eslint/js": "^9.35.0",
-		"@sveltejs/adapter-auto": "^6.1.0",
-		"@sveltejs/kit": "^2.37.1",
-		"@sveltejs/package": "^2.5.0",
-		"@sveltejs/vite-plugin-svelte": "^6.1.4",
-		"@vitest/coverage-v8": "3.2.4",
-		"eslint": "^9.35.0",
-		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-svelte": "^3.12.2",
-		"globals": "^16.3.0",
-		"husky": "^9.1.7",
-		"prettier": "^3.6.2",
-		"prettier-plugin-organize-imports": "^4.2.0",
-		"prettier-plugin-sort-json": "^4.1.1",
-		"prettier-plugin-svelte": "^3.4.0",
-		"publint": "^0.3.12",
-		"svelte": "^5.38.7",
-		"svelte-check": "^4.3.1",
-		"typescript": "^5.9.2",
-		"typescript-eslint": "^8.42.0",
-		"vite": "^7.1.5",
-		"vitest": "^3.2.4"
-	},
-	"peerDependencies": {
-		"svelte": "^5.0.0"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild"
-		]
-	},
-	"tags": [
-		"svelte",
-		"satori",
-		"opengraph"
-	],
-	"dependencies": {
-		"dompurify": "^3.2.6"
-	}
+    "name": "@humanspeak/svelte-purify",
+    "version": "0.0.0",
+    "description": "Safe HTML rendering for Svelte powered by DOMPurify. SSR-ready, browser-only entry, and edge-friendly options.",
+    "keywords": [
+        "svelte",
+        "sveltekit",
+        "dompurify",
+        "sanitize",
+        "sanitization",
+        "xss",
+        "security",
+        "html",
+        "safe-html",
+        "render",
+        "renderer",
+        "ssr",
+        "edge",
+        "browser",
+        "browser-only",
+        "svelte-component",
+        "svelte-library",
+        "svelte-plugin",
+        "dom",
+        "dompurify-config"
+    ],
+    "homepage": "https://github.com/humanspeak/svelte-purify#readme",
+    "bugs": {
+        "url": "https://github.com/humanspeak/svelte-purify/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/humanspeak/svelte-purify.git"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/humanspeak"
+    },
+    "license": "MIT",
+    "author": "Humanspeak, Inc.",
+    "sideEffects": [
+        "**/*.css"
+    ],
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "svelte": "./dist/index.js"
+        }
+    },
+    "svelte": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist",
+        "!dist/**/*.test.*",
+        "!dist/**/*.spec.*"
+    ],
+    "scripts": {
+        "build": "vite build && npm run prepack",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+        "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+        "dev": "vite dev",
+        "format": "prettier --write .",
+        "husky": "husky",
+        "lint": "prettier --check . && eslint .",
+        "prepack": "svelte-kit sync && svelte-package && publint",
+        "prepare": "svelte-kit sync || echo ''",
+        "preview": "vite preview",
+        "test": "vitest --coverage --run",
+        "test:unit": "vitest --coverage --run",
+        "test:watch": "vitest --coverage"
+    },
+    "dependencies": {
+        "dompurify": "^3.2.6"
+    },
+    "devDependencies": {
+        "@eslint/compat": "^1.3.2",
+        "@eslint/js": "^9.35.0",
+        "@sveltejs/adapter-auto": "^6.1.0",
+        "@sveltejs/kit": "^2.37.1",
+        "@sveltejs/package": "^2.5.0",
+        "@sveltejs/vite-plugin-svelte": "^6.1.4",
+        "@testing-library/jest-dom": "^6.8.0",
+        "@testing-library/svelte": "^5.2.8",
+        "@types/node": "^24.3.1",
+        "@vitest/coverage-v8": "3.2.4",
+        "eslint": "^9.35.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-svelte": "^3.12.2",
+        "globals": "^16.3.0",
+        "husky": "^9.1.7",
+        "jsdom": "^26.1.0",
+        "prettier": "^3.6.2",
+        "prettier-plugin-organize-imports": "^4.2.0",
+        "prettier-plugin-sort-json": "^4.1.1",
+        "prettier-plugin-svelte": "^3.4.0",
+        "publint": "^0.3.12",
+        "svelte": "^5.38.7",
+        "svelte-check": "^4.3.1",
+        "typescript": "^5.9.2",
+        "typescript-eslint": "^8.42.0",
+        "vite": "^7.1.5",
+        "vitest": "^3.2.4"
+    },
+    "peerDependencies": {
+        "svelte": "^5.0.0"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "esbuild"
+        ]
+    },
+    "tags": [
+        "svelte",
+        "satori",
+        "opengraph"
+    ]
 }
