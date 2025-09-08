@@ -5,8 +5,9 @@
 {
     "$schema": "node_modules/wrangler/config-schema.json",
     "name": "svelte-page-purify",
-    "main": "src/index.ts",
     "compatibility_date": "2025-08-21",
+    "compatibility_flags": ["nodejs_als", "nodejs_compat"],
+    "pages_build_output_dir": ".svelte-kit/cloudflare",
     "observability": {
         "enabled": true
     }
