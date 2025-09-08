@@ -1,17 +1,21 @@
-<script>
-    import DOMPurify from 'dompurify';
+<script lang="ts">
+    import { BrowserDOMPurify } from '$lib/helpers/browser.svelte'
+    import type { Config } from 'dompurify'
+    import { onMount } from 'svelte'
 
-  /**
-   * @typedef {Object} Props
-   * @property {string} html
-   * @property {Parameters<typeof DOMPurify.sanitize>[1]} [options]
-   */
-
-
-  /** @type {Props} */
-  let { html, options = undefined } = $props()
-
-  let sanitized = $derived(DOMPurify.sanitize(html, options))
+    type Props = {
+        html: string
+        options?: Config
+    }
+    let { html, options = undefined }: Props = $props()
+    const sanitize = $derived(new BrowserDOMPurify(html, options))
+    let mounted = $state(false)
+    onMount(() => {
+        mounted = true
+    })
 </script>
 
-{@html sanitized}
+{#if mounted}
+    <!-- trunk-ignore(eslint/svelte/no-at-html-tags) -->
+    {@html sanitize.html}
+{/if}

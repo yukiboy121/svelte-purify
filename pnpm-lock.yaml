@@ -11,6 +11,9 @@ importers:
       dompurify:
         specifier: ^3.2.6
         version: 3.2.6
+      jsdom:
+        specifier: ^26.1.0
+        version: 26.1.0
     devDependencies:
       '@eslint/compat':
         specifier: ^1.3.2
@@ -36,6 +39,9 @@ importers:
       '@testing-library/svelte':
         specifier: ^5.2.8
         version: 5.2.8(svelte@5.38.7)(vite@7.1.5(@types/node@24.3.1))(vitest@3.2.4(@types/node@24.3.1)(jsdom@26.1.0))
+      '@types/jsdom':
+        specifier: ^21.1.7
+        version: 21.1.7
       '@types/node':
         specifier: ^24.3.1
         version: 24.3.1
@@ -57,9 +63,6 @@ importers:
       husky:
         specifier: ^9.1.7
         version: 9.1.7
-      jsdom:
-        specifier: ^26.1.0
-        version: 26.1.0
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -618,11 +621,17 @@ packages:
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
+  '@types/jsdom@21.1.7':
+    resolution: {integrity: sha512-yOriVnggzrnQ3a9OKOCxaVuSug3w3/SbOj5i7VwXWZEyUNl3bLF9V3MfxGbZKuwqJOQyRfqXyROBB1CoZLFWzA==}
+
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
   '@types/node@24.3.1':
     resolution: {integrity: sha512-3vXmQDXy+woz+gnrTvuvNrPzekOi+Ds0ReMxw0LzBiK3a+1k0kQn9f2NWk+lgD4rJehFUmYy2gMhJ2ZI+7YP9g==}
+
+  '@types/tough-cookie@4.0.5':
+    resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
 
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
@@ -2212,11 +2221,19 @@ snapshots:
 
   '@types/estree@1.0.8': {}
 
+  '@types/jsdom@21.1.7':
+    dependencies:
+      '@types/node': 24.3.1
+      '@types/tough-cookie': 4.0.5
+      parse5: 7.3.0
+
   '@types/json-schema@7.0.15': {}
 
   '@types/node@24.3.1':
     dependencies:
       undici-types: 7.10.0
+
+  '@types/tough-cookie@4.0.5': {}
 
   '@types/trusted-types@2.0.7':
     optional: true

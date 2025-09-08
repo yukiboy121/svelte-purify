@@ -1,58 +1,115 @@
-# Svelte library
+# @humanspeak/svelte-purify
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+A tiny, friendly sanitizer for Svelte that keeps your HTML shiny and safe using DOMPurify. SSR-ready by default.
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+[![NPM version](https://img.shields.io/npm/v/@humanspeak/svelte-purify.svg)](https://www.npmjs.com/package/@humanspeak/svelte-purify)
+[![Build Status](https://github.com/humanspeak/svelte-purify/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/humanspeak/svelte-purify/actions/workflows/npm-publish.yml)
+[![Coverage Status](https://coveralls.io/repos/github/humanspeak/svelte-purify/badge.svg?branch=main)](https://coveralls.io/github/humanspeak/svelte-purify?branch=main)
+[![License](https://img.shields.io/npm/l/@humanspeak/svelte-purify.svg)](https://github.com/humanspeak/svelte-purify/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/npm/dm/@humanspeak/svelte-purify.svg)](https://www.npmjs.com/package/@humanspeak/svelte-purify)
+[![CodeQL](https://github.com/humanspeak/svelte-purify/actions/workflows/codeql.yml/badge.svg)](https://github.com/humanspeak/svelte-purify/actions/workflows/codeql.yml)
+[![Install size](https://packagephobia.com/badge?p=@humanspeak/svelte-purify)](https://packagephobia.com/result?p=@humanspeak/svelte-purify)
+[![Code Style: Trunk](https://img.shields.io/badge/code%20style-trunk-blue.svg)](https://trunk.io)
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
+[![Types](https://img.shields.io/npm/types/@humanspeak/svelte-purify.svg)](https://www.npmjs.com/package/@humanspeak/svelte-purify)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/humanspeak/svelte-purify/graphs/commit-activity)
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- 🚀 **Fast and tiny**: DOMPurify under the hood, minimal wrapper
+- 🔒 **XSS protection**: strips scripts, unsafe URLs, and sneaky attributes
+- 🧰 **Options passthrough**: you control DOMPurify via `options`
+- 🧭 **SSR-ready**: default component works on server and client
+- 🧪 **Tested**: unit tests with Vitest/JSDOM
+- 🧑‍💻 **Full TypeScript**: proper types for options and props
+- 🧿 **Svelte 5 runes-friendly**: clean, modern Svelte API
 
-```sh
-# create a new project in the current directory
-npx sv create
+## Installation
 
-# create a new project in my-app
-npx sv create my-app
+```bash
+npm i -S @humanspeak/svelte-purify
+# or
+pnpm add @humanspeak/svelte-purify
+# or
+yarn add @humanspeak/svelte-purify
 ```
 
-## Developing
+## Basic Usage
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Default
 
-```sh
-npm run dev
+```svelte
+<script lang="ts">
+    import { SveltePurify } from '@humanspeak/svelte-purify'
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+    const html = `<p>Hello <strong>world</strong><script>alert(1)</script></p>`
+</script>
+
+<SveltePurify {html} />
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+## Options (DOMPurify)
 
-## Building
+Pass any `DOMPurify.sanitize` options. We don’t hide anything—use the full power of DOMPurify.
 
-To build your library:
+```svelte
+<script lang="ts">
+    import { SveltePurify } from '@humanspeak/svelte-purify'
 
-```sh
-npm pack
+    const html = `<a href="javascript:alert(1)" title="nope">click me</a>`
+    const options = {
+        ALLOWED_TAGS: ['a'],
+        ALLOWED_ATTR: ['href', 'title']
+    }
+</script>
+
+<SveltePurify {html} {options} />
 ```
 
-To create a production version of your showcase app:
+Note: The component returns sanitized HTML as a string (not DOM nodes).
 
-```sh
-npm run build
+## Props
+
+| Component      | Prop      | Type                                       | Description                       |
+| -------------- | --------- | ------------------------------------------ | --------------------------------- |
+| `SveltePurify` | `html`    | `string`                                   | Raw HTML to sanitize and render   |
+|                | `options` | `Parameters<typeof DOMPurify.sanitize>[1]` | DOMPurify options (all supported) |
+
+## Exports
+
+```ts
+import { SveltePurify } from '@humanspeak/svelte-purify'
 ```
 
-You can preview the production build with `npm run preview`.
+- **SveltePurify**: SSR-friendly sanitizer component
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Security
 
-## Publishing
+This library delegates sanitization to [DOMPurify](https://github.com/cure53/DOMPurify), a battle-tested sanitizer. It removes script tags, event handler attributes (like `onerror`), and unsafe URLs (`javascript:`), among many other protections.
 
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
+## Examples
 
-To publish your library to [npm](https://www.npmjs.com):
+Strip a specific tag with DOMPurify options:
 
-```sh
-npm publish
+```svelte
+<SveltePurify html="<p>Hello <strong>world</strong></p>" options={{ FORBID_TAGS: ['strong'] }} />
 ```
+
+Allow an extra tag:
+
+```svelte
+<SveltePurify
+    html="<iframe src=\"about:blank\"></iframe>"
+    options={{ ADD_TAGS: ['iframe'] }}
+/>
+```
+
+## License
+
+MIT © [Humanspeak, Inc.](LICENSE)
+
+## Credits
+
+Made with ❤️ by [Humanspeak](https://humanspeak.com)
+
+Special thanks to [@jill64](https://github.com/jill64) — her years of Svelte contributions taught me so much and inspired this work.
